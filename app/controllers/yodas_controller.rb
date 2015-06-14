@@ -1,6 +1,7 @@
 require 'unirest'
 require 'nokogiri'
 require 'pry'
+
 class YodasController < ApplicationController
 
   skip_before_action :verify_authenticity_token
@@ -13,6 +14,9 @@ class YodasController < ApplicationController
 
      skywalker = Yoda.new(@input)
      result = skywalker.yoda_api
-     binding.pry
+
+     skywalker.yoda_talks(result)
+     redirect_to "/"
+
   end
 end
